@@ -1,0 +1,4 @@
+<framework>
+    <automata name="TCP_Socket" binary="TCPSocket.dll" graph="TCPSocket.graphml"/>
+    <automata name="Connection" binary="Connection.dll" graph="Connection.graphml"/>
+</framework>
