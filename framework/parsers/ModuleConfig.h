@@ -6,9 +6,9 @@
 #include <map>
 #include <memory>
 
+#include "../automaton/AutomatonBase.h"
 #include "Edge.h"
 
-#include "../automaton/Automaton.h"
 
 class ModuleConfig {
 	std::string name;
@@ -26,7 +26,7 @@ public:
 
 	int readGraph();
 
-	std::shared_ptr<Automaton> createAutomatonTopology();
+	std::shared_ptr<AutomatonBase> createAutomatonTopology();
 };
 
 

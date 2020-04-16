@@ -2,6 +2,7 @@
 
 #include "../../tinyxml2/tinyxml2.h"
 
+#include "../automaton/AutomatonDirected.h"
 
 ModuleConfig::ModuleConfig(std::string name, std::string modulePath, std::string graphPath)
 	: name(name), modulePath(modulePath), graphPath(graphPath), nodes(), edges()
@@ -101,9 +102,9 @@ int ModuleConfig::readGraph()
 	return 0;
 }
 
-std::shared_ptr<Automaton> ModuleConfig::createAutomatonTopology()
+std::shared_ptr<AutomatonBase> ModuleConfig::createAutomatonTopology()
 {
-	std::shared_ptr<Automaton> newAutomaton = std::make_shared<Automaton>(name, modulePath);
+	std::shared_ptr<AutomatonDirected> newAutomaton = std::make_shared<AutomatonDirected>(name, modulePath);
 	for(auto& node: nodes)
 	{
 		newAutomaton->getNode(node.second);	// this is enough to just add them
@@ -116,6 +117,6 @@ std::shared_ptr<Automaton> ModuleConfig::createAutomatonTopology()
 		auto target = newAutomaton->getNode(starget);
 		source->connectCommand(edge.command, target);
 	}
-	return newAutomaton;
+	return std::static_pointer_cast<AutomatonBase>(newAutomaton);
 }
 

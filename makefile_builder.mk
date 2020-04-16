@@ -1,9 +1,9 @@
 .PRECIOUS: %/.
 
 ASM = nasm
-CC 	= gcc
-CXX = g++
-LD	= g++
+CC 	= clang
+CXX = clang++
+LD	= clang++
 
 ASM_TO_COMPILE 	=		# define sources you wish
 C_TO_COMPILE 	= 		# to build as these when

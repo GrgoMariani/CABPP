@@ -7,8 +7,8 @@
 #include <memory>
 
 #include "Edge.h"
-#include "../automaton/Automaton.h"
 #include "../../tinyxml2/tinyxml2.h"
+#include "../automaton/AutomatonBase.h"
 #include "../threads/AutomatonManager.h"
 
 #include "ModuleConfig.h"
@@ -17,7 +17,7 @@
 class FrameworkConfig {
 	std::string configPath;
 	std::vector<ModuleConfig> modules;
-	std::map<std::string, std::shared_ptr<Automaton>> automatons; // <name, automaton>
+	std::map<std::string, std::shared_ptr<AutomatonBase>> automatons; // <name, automaton>
 public:
 	FrameworkConfig(std::string configPath);
 

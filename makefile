@@ -11,8 +11,10 @@ FRAMEWORK_SOURCES_CPP := 	framework/framework.cpp \
 							framework/parsers/FrameworkConfig.cpp \
 							framework/parsers/ModuleConfig.cpp \
 							framework/parsers/Edge.cpp \
-							framework/automaton/Automaton.cpp \
-							framework/automaton/AutomatonNode.cpp \
+							framework/automaton/AutomatonBase.cpp \
+							framework/automaton/AutomatonDirected.cpp \
+							framework/automaton/AutomatonNodeBase.cpp \
+							framework/automaton/AutomatonNodeDirected.cpp \
 							framework/automaton/Callable.cpp \
 							framework/threads/AutomatonThread.cpp \
 							framework/threads/AutomatonManager.cpp \

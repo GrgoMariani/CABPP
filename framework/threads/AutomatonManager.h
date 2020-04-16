@@ -14,7 +14,7 @@ class AutomatonManager : public std::enable_shared_from_this<AutomatonManager>
 	std::vector<std::shared_ptr<std::thread>> runningThreads;
 	std::shared_ptr<ShitLogger> logger;
 public:
-	AutomatonManager(std::map<std::string, std::shared_ptr<Automaton>>& automatons);
+	AutomatonManager(std::map<std::string, std::shared_ptr<AutomatonBase>>& automatons);
 public:
 	void setLogger(std::shared_ptr<ShitLogger> newLogger);
 

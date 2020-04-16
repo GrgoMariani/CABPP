@@ -54,7 +54,10 @@ void FrameworkConfig::loadAllModules()
 {
 	for(auto& automaton : automatons)
 	{
-		automaton.second->loadBinary();
+		if(automaton.second->loadBinary() == 0)
+		{
+			automaton.second->loadAllCallables();
+		}
 	}
 }
 

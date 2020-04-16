@@ -1,7 +1,7 @@
 #include "AutomatonThread.h"
 #include <chrono>
 
-AutomatonThread::AutomatonThread(std::shared_ptr<Automaton> newAutomaton)
+AutomatonThread::AutomatonThread(std::shared_ptr<AutomatonBase> newAutomaton)
 	: mtx(), automaton(newAutomaton), name(automaton->getName()), state(NOT_INITIALIZED), cmd_queue()
 {
 

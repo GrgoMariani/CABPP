@@ -19,7 +19,7 @@ extern "C" __declspec(dllexport) int LOG_MESSAGE(int loglvl, std::string message
 	return 0;
 }
 
-AutomatonManager::AutomatonManager(std::map<std::string, std::shared_ptr<Automaton>>& automatons)
+AutomatonManager::AutomatonManager(std::map<std::string, std::shared_ptr<AutomatonBase>>& automatons)
 	: automatonThreads(), runningThreads(), logger(nullptr)
 {
 	for(auto& automaton : automatons)

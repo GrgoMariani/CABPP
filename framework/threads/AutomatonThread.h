@@ -8,7 +8,7 @@
 #include <thread>
 #include <mutex>
 
-#include "../automaton/Automaton.h"
+#include "../automaton/AutomatonBase.h"
 
 
 class AutomatonThread : public std::enable_shared_from_this<AutomatonThread>{
@@ -18,13 +18,13 @@ class AutomatonThread : public std::enable_shared_from_this<AutomatonThread>{
 	};
 
 	std::recursive_mutex mtx;
-	std::shared_ptr<Automaton> automaton;
+	std::shared_ptr<AutomatonBase> automaton;
 	std::string name;
 
 	int state;
 	std::queue<std::pair<std::string, std::string>> cmd_queue;
 public:
-	AutomatonThread(std::shared_ptr<Automaton> newAutomaton);
+	AutomatonThread(std::shared_ptr<AutomatonBase> newAutomaton);
 
 	int loop(); // the only function that will be in another thread
 	int inputCommand(std::string cmd, std::string argument);
