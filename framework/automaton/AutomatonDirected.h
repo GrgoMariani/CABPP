@@ -2,6 +2,7 @@
 #define FRAMEWORK_AUTOMATON_AUTOMATONDIRECTED_H_
 
 #include "AutomatonBase.h"
+#include "AutomatonNodeDirected.h"
 
 class AutomatonDirected : public AutomatonBase {
 

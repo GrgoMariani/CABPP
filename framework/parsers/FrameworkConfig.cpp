@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../../tinyxml2/tinyxml2.h"
 #include "FrameworkConfig.h"
 
@@ -22,12 +24,17 @@ int FrameworkConfig::readConfigFromFile()
 		const char * name = nullptr;
 		const char * modulePath = nullptr;
 		const char * graphPath = nullptr;
+		const char * graphType = nullptr;
 		name = pAutomata->Attribute("name");
 		modulePath = pAutomata->Attribute("binary");
 		graphPath = pAutomata->Attribute("graph");
-		if(modulePath == nullptr || graphPath == nullptr)
+		graphType = pAutomata->Attribute("graphtype");
+		if(modulePath == nullptr || graphPath == nullptr || graphType == nullptr)
+		{
+			std::cerr << "Error in main configuration" << std::endl;
 			continue;
-		modules.push_back(ModuleConfig(std::string(name), std::string(modulePath), std::string(graphPath)));
+		}
+		modules.push_back(ModuleConfig(std::string(name), std::string(modulePath), std::string(graphPath), std::string(graphType)));
 		pAutomata = pAutomata->NextSiblingElement("automata");
 	}
 	return 0;
@@ -46,9 +53,12 @@ void FrameworkConfig::createAllModulesTopology()
 	for(auto& module : modules)
 	{
 		std::string name = module.getName();
-		automatons[name] = module.createAutomatonTopology();
+		auto automaton = module.createAutomatonTopology();
+		if(automaton != nullptr)
+			automatons[name] = automaton;
 	}
 }
+
 
 void FrameworkConfig::loadAllModules()
 {

@@ -17,7 +17,7 @@ STATE(_start_)
 	return 0;
 }
 
-STATE(socket_connected)
+STATE(socket_connection_success)
 {
 	LOG_MESSAGE(LOGLVL_TRACE, "STATE socket_connected ["+argument+"]");
 
@@ -61,7 +61,7 @@ STATE(socket_disconnected)
 	return 0;
 }
 
-STATE(parse_data)
+STATE(data_received)
 {
 	LOG_MESSAGE(LOGLVL_TRACE, "STATE parse_data ["+argument+"]");
 	std::string ip_port; 		// get from argument

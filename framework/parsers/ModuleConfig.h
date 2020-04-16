@@ -15,11 +15,12 @@ class ModuleConfig {
 
 	std::string modulePath;
 	std::string graphPath;
+	std::string graphType;
 
 	std::map<std::string, std::string> nodes;	//use std::map string string
 	std::vector<Edge> edges;
 public:
-	ModuleConfig(std::string name, std::string modulePath, std::string graphPath);
+	ModuleConfig(std::string name, std::string modulePath, std::string graphPath, std::string graphType);
 
 	std::string getName();
 	std::string getModulePath();

@@ -16,7 +16,7 @@ public:
 	~AutomatonNodeDirected();
 	void connectCommand(std::string command, std::shared_ptr<AutomatonNodeBase> nextNode);
 public:
-	std::shared_ptr<AutomatonNodeBase> inputCommand(std::string command, std::string argument); // calls callable , returns the next node or nullptr
+	std::shared_ptr<AutomatonNodeBase> inputCommand(std::string command, std::string argument);
 };
 
 

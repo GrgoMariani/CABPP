@@ -3,9 +3,10 @@
 #include "../../tinyxml2/tinyxml2.h"
 
 #include "../automaton/AutomatonDirected.h"
+#include "../automaton/AutomatonFullyConnected.h"
 
-ModuleConfig::ModuleConfig(std::string name, std::string modulePath, std::string graphPath)
-	: name(name), modulePath(modulePath), graphPath(graphPath), nodes(), edges()
+ModuleConfig::ModuleConfig(std::string name, std::string modulePath, std::string graphPath, std::string graphType)
+	: name(name), modulePath(modulePath), graphPath(graphPath), graphType(graphType), nodes(), edges()
 {
 
 }
@@ -104,19 +105,32 @@ int ModuleConfig::readGraph()
 
 std::shared_ptr<AutomatonBase> ModuleConfig::createAutomatonTopology()
 {
-	std::shared_ptr<AutomatonDirected> newAutomaton = std::make_shared<AutomatonDirected>(name, modulePath);
-	for(auto& node: nodes)
+	if(graphType.compare("directional")==0)
 	{
-		newAutomaton->getNode(node.second);	// this is enough to just add them
+		std::shared_ptr<AutomatonDirected> newDirecteddAutomaton = std::make_shared<AutomatonDirected>(name, modulePath);
+		for(auto& node: nodes)
+		{
+			newDirecteddAutomaton->getNode(node.second);	// this is enough to just add them
+		}
+		for(auto& edge: edges)
+		{
+			std::string ssource = nodes[edge.source];
+			std::string starget = nodes[edge.target];
+			auto source = newDirecteddAutomaton->getNode(ssource);
+			auto target = newDirecteddAutomaton->getNode(starget);
+			source->connectCommand(edge.command, target);
+		}
+		return std::static_pointer_cast<AutomatonBase>(newDirecteddAutomaton);
 	}
-	for(auto& edge: edges)
+	if(graphType.compare("fully_connected")==0)
 	{
-		std::string ssource = nodes[edge.source];
-		std::string starget = nodes[edge.target];
-		auto source = newAutomaton->getNode(ssource);
-		auto target = newAutomaton->getNode(starget);
-		source->connectCommand(edge.command, target);
+		std::shared_ptr<AutomatonFullyConnected> newFullyConnectedAutomaton = std::make_shared<AutomatonFullyConnected>(name, modulePath);
+		for(auto& node: nodes)
+		{
+			auto new_node = newFullyConnectedAutomaton->getNode(node.second);
+			new_node->connectCommand(node.second, new_node);
+		}
+		return std::static_pointer_cast<AutomatonBase>(newFullyConnectedAutomaton);
 	}
-	return std::static_pointer_cast<AutomatonBase>(newAutomaton);
+	return nullptr;
 }
-
