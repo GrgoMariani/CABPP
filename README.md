@@ -2,7 +2,7 @@
  C++-implemented Automata Based Programming Pattern
 
 ## Requirements
-- Windows OS
+- __Windows OS__
 - __MinGW__ with __g++__ or __clang++__
 - __tinyxml2__ (included in this repo as a submodule)
 - __yEd Graph Editor__
@@ -17,14 +17,16 @@
 ## Project Description
 I already did something similar in Python which you can check in my other repo. This would be a good start to learn about how this programming pattern works.
 
-Goal of this project would be to use the documentation as the code. The graphs serve as the behaviour logic of each c++ module. Each module has its own state it executes when changed on a specific command.
+Goal of this project would be to use the documentation as the code.
+
+The graphs serve as the behaviour logic of each C++ dll module. Each module has its own states it executes when changed on a specific command.
 
 Macros are included in the common folder headers.
 
 ## Graphs
 I included the possibility to add one of two types of graphs:
-- __Directed__
-- __Fully connected__ (complete)
+- __Directed__ : when your module must follow certain design flow. Every module starts from the __\_start\___ state.
+- __Fully connected__ : also called complete. When using this graph type it is best to follow the REST design principles. This kind of graph does not need to have edges as it assumes every node is connected to every other node. The command to execute the given node is the same as the name of the node.
 
 ## Example included
 The current example implements a completely simplicated TCP socket server, where one module handles all the socket connections while the other module handles the message to be sent to each client.

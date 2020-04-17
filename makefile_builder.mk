@@ -1,9 +1,9 @@
 .PRECIOUS: %/.
 
 ASM = nasm
-CC 	= gcc
-CXX = g++
-LD	= g++
+CC 	= clang
+CXX = clang++
+LD	= clang++
 
 ASM_TO_COMPILE 	=		# define sources you wish
 C_TO_COMPILE 	= 		# to build as these when
@@ -24,8 +24,9 @@ endif
 
 
 build_dir 		:= build
-obj_dir			:= $(build_dir)/objs
-dep_dir			:= $(build_dir)/deps
+compilation_dir := $(build_dir)/.compilation
+obj_dir			:= $(compilation_dir)/objs
+dep_dir			:= $(compilation_dir)/deps
 orig_o_dir 		:= $(obj_dir)/orig
 orig_d_dir 		:= $(dep_dir)/orig
 
