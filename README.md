@@ -2,9 +2,9 @@
  C++-implemented Automata Based Programming Pattern
 
 ## Requirements
-- Windows machine
-- __MinGW__ + __g++__ | __clang++__
-- __tinyxml2__ (submodule included in this repo)
+- Windows OS
+- __MinGW__ with __g++__ or __clang++__
+- __tinyxml2__ (included in this repo as a submodule)
 - __yEd Graph Editor__
 
 ## Steps to install
@@ -21,10 +21,18 @@ Goal of this project would be to use the documentation as the code. The graphs s
 
 Macros are included in the common folder headers.
 
+## Graphs
+I included the possibility to add one of two types of graphs:
+- __Directed__
+- __Fully connected__ (complete)
+
 ## Example included
 The current example implements a completely simplicated TCP socket server, where one module handles all the socket connections while the other module handles the message to be sent to each client.
 
+The TCP_Socket module must be handled as a directed graph while the Connection module is registered as fully connected.
+
 Naturally this is a oversimplification of what can be done using this programming pattern.
+
 
 ## TODO
 I need to implement some more explanations here. In short this is a framework with makefile for building modules which it can handle.

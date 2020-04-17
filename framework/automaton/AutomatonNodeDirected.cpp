@@ -4,7 +4,8 @@
 
 #include "Callable.h"
 
-AutomatonNodeDirected::AutomatonNodeDirected(std::string name) : AutomatonNodeBase(name), edges()
+AutomatonNodeDirected::AutomatonNodeDirected(std::string name)
+	: AutomatonNodeBase(name), edges()
 {
 
 }

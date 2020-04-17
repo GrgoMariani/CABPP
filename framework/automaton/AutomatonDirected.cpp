@@ -2,7 +2,8 @@
 
 #include "AutomatonDirected.h"
 
-AutomatonDirected::AutomatonDirected(std::string name, std::string modulePath) : AutomatonBase(name, modulePath)
+AutomatonDirected::AutomatonDirected(std::string name, std::string modulePath)
+	: AutomatonBase(name, modulePath)
 {
 	current_state = getNode("_start_");
 }

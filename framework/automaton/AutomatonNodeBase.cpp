@@ -1,6 +1,7 @@
 #include "AutomatonNodeBase.h"
 
-AutomatonNodeBase::AutomatonNodeBase(std::string name) : name(name), callable(default_callable)
+AutomatonNodeBase::AutomatonNodeBase(std::string name)
+	: name(name), callable(default_callable)
 {
 
 }

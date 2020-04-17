@@ -4,7 +4,8 @@
 
 #include "Callable.h"
 
-AutomatonNodeFullyConnected::AutomatonNodeFullyConnected(std::string name, std::shared_ptr<std::map<std::string, std::shared_ptr<AutomatonNodeFullyConnected>>> edges) : AutomatonNodeBase(name), edges(edges)
+AutomatonNodeFullyConnected::AutomatonNodeFullyConnected(std::string name, std::shared_ptr<std::map<std::string, std::shared_ptr<AutomatonNodeFullyConnected>>> edges)
+	: AutomatonNodeBase(name), edges(edges)
 {
 
 }

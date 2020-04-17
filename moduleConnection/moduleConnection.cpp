@@ -11,12 +11,6 @@ static int num_connections = 0;
 static std::map<std::string, int> connections;
 
 
-STATE(_start_)
-{
-	LOG_MESSAGE(LOGLVL_TRACE, "STATE _start_ ["+argument+"]");
-	return 0;
-}
-
 STATE(socket_connection_success)
 {
 	LOG_MESSAGE(LOGLVL_TRACE, "STATE socket_connected ["+argument+"]");
@@ -64,7 +58,7 @@ STATE(socket_disconnected)
 STATE(data_received)
 {
 	LOG_MESSAGE(LOGLVL_TRACE, "STATE parse_data ["+argument+"]");
-	std::string ip_port; 		// get from argument
+	std::string ip_port; 	// get from argument
 	std::string msg_recvd; 	// get from argument
 
 	tinyxml2::XMLDocument doc;

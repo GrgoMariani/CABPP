@@ -105,7 +105,7 @@ int ModuleConfig::readGraph()
 
 std::shared_ptr<AutomatonBase> ModuleConfig::createAutomatonTopology()
 {
-	if(graphType.compare("directional")==0)
+	if(graphType.compare("directed")==0)
 	{
 		std::shared_ptr<AutomatonDirected> newDirecteddAutomaton = std::make_shared<AutomatonDirected>(name, modulePath);
 		for(auto& node: nodes)
